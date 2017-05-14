@@ -37,6 +37,7 @@ public class SessionSerializationMetadata implements Serializable {
         this.sessionAttributesHash = sessionAttributesHash;
     }
 
+    @SuppressWarnings("unused")
     private void readObjectNoData() throws ObjectStreamException {
         this.sessionAttributesHash = new byte[0];
     }

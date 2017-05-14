@@ -8,6 +8,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import org.apache.catalina.Container;
+import org.apache.catalina.Context;
 import org.apache.catalina.Lifecycle;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.LifecycleListener;
@@ -297,7 +299,11 @@ public class RedisSessionManager extends ManagerBase implements Lifecycle {
 
         initializeDatabaseConnection();
 
-        setDistributable(true);
+        Container container = getContainer();
+        if(container instanceof Context){
+            ((Context) container).setDistributable(true);
+        }
+        
     }
 
     /**
