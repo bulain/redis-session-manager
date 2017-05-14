@@ -3,14 +3,12 @@ package com.bulain.tomcat7.redissessions;
 import java.io.IOException;
 
 public interface Serializer {
-	void setClassLoader(ClassLoader loader);
+    void setClassLoader(ClassLoader loader);
 
-	byte[] attributesHashFrom(RedisSession session) throws IOException;
+    byte[] attributesHashFrom(RedisSession session) throws IOException;
 
-	byte[] serializeFrom(RedisSession session,
-			SessionSerializationMetadata metadata) throws IOException;
+    byte[] serializeFrom(RedisSession session, SessionSerializationMetadata metadata) throws IOException;
 
-	void deserializeInto(byte[] data, RedisSession session,
-			SessionSerializationMetadata metadata) throws IOException,
-			ClassNotFoundException;
+    void deserializeInto(byte[] data, RedisSession session, SessionSerializationMetadata metadata) throws IOException,
+            ClassNotFoundException;
 }
